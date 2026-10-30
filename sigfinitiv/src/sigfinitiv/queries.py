@@ -20,11 +20,11 @@ from typing import Sequence
 
 import pandas as pd
 
-from sigfinitive.db import query_df  # noqa: F401  (used by implementations)
+from sigfinitiv.db import query_df  # noqa: F401  (used by implementations)
 
 
 def _todo(name: str) -> NotImplementedError:
-    return NotImplementedError(f"sigfinitive.{name} is not implemented yet")
+    return NotImplementedError(f"sigfinitiv.{name} is not implemented yet")
 
 
 # ── Lookups ───────────────────────────────────────────────────────────────

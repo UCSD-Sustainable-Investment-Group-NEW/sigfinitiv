@@ -1,16 +1,16 @@
-"""Sigfinitive: UCSD Sustainable Investment Group's ESG and financial data SDK.
+"""Sigfinitiv: UCSD Sustainable Investment Group's ESG and financial data SDK.
 
-    import sigfinitive as sf
+    import sigfinitiv as sf
 
     sf.ping()
     sf.get_values(["co2_equivalent_emissions_total"], peer_group="Retail", year=2023)
     sf.sql("SELECT * FROM companies")
 
-Write functions live in `sigfinitive.ingest` and need a write-capable login.
+Write functions live in `sigfinitiv.ingest` and need a write-capable login.
 """
 
-from sigfinitive.db import close, connect, ping, query_df, sql
-from sigfinitive.queries import (
+from sigfinitiv.db import close, connect, ping, query_df, sql
+from sigfinitiv.queries import (
     coverage,
     get_company,
     get_values,

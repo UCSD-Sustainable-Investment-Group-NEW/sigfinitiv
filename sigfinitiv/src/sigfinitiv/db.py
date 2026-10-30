@@ -5,10 +5,10 @@ directory), never from function arguments, so they never end up saved in a
 notebook.
 
 Analysts set:
-    SIGFINITIVE_DB_USER, SIGFINITIVE_DB_PASSWORD
+    SIGFINITIV_DB_USER, SIGFINITIV_DB_PASSWORD
 
 Services such as the API, or anyone pointing at a dev branch, set instead:
-    SIGFINITIVE_DATABASE_URL
+    SIGFINITIV_DATABASE_URL
 """
 
 from __future__ import annotations
@@ -20,8 +20,8 @@ import pandas as pd
 import psycopg
 from dotenv import find_dotenv, load_dotenv
 
-from sigfinitive import config
-from sigfinitive.errors import ConfigError
+from sigfinitiv import config
+from sigfinitiv.errors import ConfigError
 
 _connection: psycopg.Connection | None = None
 _env_loaded = False
@@ -40,8 +40,8 @@ def _load_env() -> None:
 def connect() -> psycopg.Connection:
     """Open a new connection to the database.
 
-    Uses SIGFINITIVE_DATABASE_URL if set; otherwise builds the connection from
-    SIGFINITIVE_DB_USER and SIGFINITIVE_DB_PASSWORD plus the host in config.py.
+    Uses SIGFINITIV_DATABASE_URL if set; otherwise builds the connection from
+    SIGFINITIV_DB_USER and SIGFINITIV_DB_PASSWORD plus the host in config.py.
     Connections are in autocommit mode; writes use explicit transactions.
     """
     _load_env()
@@ -63,7 +63,7 @@ def connect() -> psycopg.Connection:
     if not host:
         raise ConfigError(
             "Database host is not configured. Set DEFAULT_HOST in "
-            f"sigfinitive/config.py or {config.ENV_DB_HOST} in your .env file."
+            f"sigfinitiv/config.py or {config.ENV_DB_HOST} in your .env file."
         )
 
     return psycopg.connect(

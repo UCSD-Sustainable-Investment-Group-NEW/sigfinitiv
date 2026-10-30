@@ -21,9 +21,9 @@ from typing import Sequence, Union
 
 import pandas as pd
 
-from sigfinitive import config
-from sigfinitive.db import get_connection  # noqa: F401  (used by implementations)
-from sigfinitive.errors import ContractError
+from sigfinitiv import config
+from sigfinitiv.db import get_connection  # noqa: F401  (used by implementations)
+from sigfinitiv.errors import ContractError
 
 ValuesSource = Union[str, os.PathLike, pd.DataFrame]
 
@@ -32,7 +32,7 @@ EXCEL_SUFFIXES = (".xlsx", ".xlsm")
 
 
 def _todo(name: str) -> NotImplementedError:
-    return NotImplementedError(f"sigfinitive.ingest.{name} is not implemented yet")
+    return NotImplementedError(f"sigfinitiv.ingest.{name} is not implemented yet")
 
 
 # ── Input handling (implemented: defines the shared format) ───────────────
