@@ -1,4 +1,4 @@
--- Sigfinitive schema. Run once as the database owner, on the dev branch first.
+-- Sigfinitiv schema. Run once as the database owner, on the dev branch first.
 -- Safe to re-run: every statement checks whether its object already exists.
 
 -- ── Tables ────────────────────────────────────────────────────────────────
@@ -45,6 +45,13 @@ BEGIN
 END
 $$;
 
+DO $$
+BEGIN
+    EXECUTE format('GRANT CONNECT ON DATABASE %I TO analyst_readonly, api_readwrite',
+                   current_database());
+END
+$$;
+
 GRANT USAGE ON SCHEMA public TO analyst_readonly, api_readwrite;
 
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO analyst_readonly;
@@ -56,7 +63,10 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public
     GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO api_readwrite;
 
 -- ── Logins (run separately, one per person or service) ───────────────────
--- Use a long random password and share it privately, never in Git or chat.
+-- Create logins here with SQL, NOT on the Neon Console's Roles page: roles
+-- made in the Console are given neon_superuser, i.e. full admin access.
+-- Passwords: at least 12 characters, mixing upper and lower case, numbers
+-- and symbols. Share them privately, never in Git or chat.
 --
 --   CREATE ROLE quant_jane LOGIN PASSWORD '<password>' IN ROLE analyst_readonly;
 --   CREATE ROLE api_service LOGIN PASSWORD '<password>' IN ROLE api_readwrite;

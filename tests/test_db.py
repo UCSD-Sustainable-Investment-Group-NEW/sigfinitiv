@@ -2,9 +2,9 @@ import os
 
 import pytest
 
-import sigfinitive as sf
-from sigfinitive import config, db
-from sigfinitive.errors import ConfigError
+import sigfinitiv as sf
+from sigfinitiv import config, db
+from sigfinitiv.errors import ConfigError
 
 ENV_VARS = [
     config.ENV_DATABASE_URL,

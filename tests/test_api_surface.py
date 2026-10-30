@@ -2,8 +2,8 @@
 
 import pytest
 
-import sigfinitive as sf
-from sigfinitive import ingest
+import sigfinitiv as sf
+from sigfinitiv import ingest
 
 PUBLIC = [
     "close", "connect", "coverage", "get_company", "get_values",

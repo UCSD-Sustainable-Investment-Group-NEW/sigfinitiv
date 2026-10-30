@@ -1,8 +1,8 @@
 import pandas as pd
 import pytest
 
-from sigfinitive.errors import ContractError
-from sigfinitive.ingest import load_values, normalize_metric_name
+from sigfinitiv.errors import ContractError
+from sigfinitiv.ingest import load_values, normalize_metric_name
 
 
 @pytest.mark.parametrize(

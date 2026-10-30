@@ -1,4 +1,4 @@
-# Sigfinitive
+# Sigfinitiv
 
 The UCSD Sustainable Investment Group’s Python package for ESG and financial
 company data. It connects straight to our Neon Postgres database; no server
@@ -7,7 +7,7 @@ is needed.
 ## Install
 
 ```bash
-pip install git+https://github.com/UCSD-Sustainable-Investment-Group-NEW/sigfinitive
+pip install git+https://github.com/UCSD-Sustainable-Investment-Group-NEW/sigfinitiv
 ```
 
 ## Set up your login
@@ -15,8 +15,8 @@ pip install git+https://github.com/UCSD-Sustainable-Investment-Group-NEW/sigfini
 Create a `.env` file in the folder you run your code from (copy `.env.example`):
 
 ```
-SIGFINITIVE_DB_USER=your_username
-SIGFINITIVE_DB_PASSWORD=your_password
+SIGFINITIV_DB_USER=your_username
+SIGFINITIV_DB_PASSWORD=your_password
 ```
 
 Ask the project lead for your login. Never paste your password into a
@@ -25,7 +25,7 @@ notebook or commit `.env`.
 ## Analysts: reading data
 
 ```python
-import sigfinitive as sf
+import sigfinitiv as sf
 
 sf.ping()  # True if you're connected
 
@@ -59,7 +59,7 @@ metric and how many companies report it. Analyst logins are read-only, so
 Needs a login with write access.
 
 ```python
-from sigfinitive import ingest
+from sigfinitiv import ingest
 
 ingest.upsert_company("COST.O", "Costco Wholesale Corp", "Diversified Retail", "United States")
 ingest.upsert_values("costco_values.csv")             # add or update rows
@@ -92,7 +92,7 @@ schema and database roles are in `sql/001_init.sql`.
 ## For contributors
 
 ```
-src/sigfinitive/
+src/sigfinitiv/
 ├── config.py    # database host, env variable names, data contract constants
 ├── db.py        # connect(), ping(), sql(): done
 ├── queries.py   # read functions: stubs to implement
@@ -114,13 +114,13 @@ src/sigfinitive/
 
 **Local development:**
 ```bash
-git clone https://github.com/UCSD-Sustainable-Investment-Group-NEW/sigfinitive
-cd sigfinitive
+git clone https://github.com/UCSD-Sustainable-Investment-Group-NEW/sigfinitiv
+cd sigfinitiv
 python -m venv .venv
 .venv\Scripts\activate          # Windows; macOS/Linux: source .venv/bin/activate
 pip install -e ".[dev]"
 pytest
 ```
 Database tests are skipped unless credentials are set. Point
-`SIGFINITIVE_DATABASE_URL` at the Neon **dev** branch while developing, never
+`SIGFINITIV_DATABASE_URL` at the Neon **dev** branch while developing, never
 production.
